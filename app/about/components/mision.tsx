@@ -12,7 +12,7 @@ export function Mission() {
   const mission = [
     {
       id: 2,
-      desc: "CyberProbeX is committed to fortifying organizational security postures through advanced penetration testing methodologies, strategic risk intelligence, and comprehensive compliance frameworks. We empower enterprises to navigate the evolving threat landscape with confidence by delivering actionable security insights, adaptive defense mechanisms, and sustainable resilience strategies that transform security from a barrier into a business enabler.",
+      desc: "HacFy Cyber Chetana is committed to fortifying organizational security postures through advanced penetration testing methodologies, strategic risk intelligence, and comprehensive compliance frameworks. We empower enterprises to navigate the evolving threat landscape with confidence by delivering actionable security insights, adaptive defense mechanisms, and sustainable resilience strategies that transform security from a barrier into a business enabler.",
     },
   ];
 

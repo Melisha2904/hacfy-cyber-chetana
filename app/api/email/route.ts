@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
-import puppeteer from 'puppeteer';
+import puppeteer from 'puppeteer-core';
 import chromium from '@sparticuz/chromium';
 
 const generateCertificateHTML = (firstName: string, lastName: string) => `
@@ -115,16 +115,22 @@ export async function POST(req: NextRequest) {
     let browser;
     
     if (isProd) {
-      // Production (e.g. Vercel)
-      const executablePath = await chromium.executablePath();
+      // Production (Vercel)
       browser = await puppeteer.launch({
         args: chromium.args,
-        executablePath,
+        defaultViewport: chromium.defaultViewport,
+        executablePath: await chromium.executablePath(),
         headless: true,
       });
     } else {
       // Local Development (Windows/Mac)
+      // Attempt to find local Chrome or Edge
+      const localPath = process.platform === 'win32' 
+        ? 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe' 
+        : '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
+        
       browser = await puppeteer.launch({
+        executablePath: localPath,
         headless: true,
       });
     }
