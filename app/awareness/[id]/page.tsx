@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { ArrowLeft, PlayCircle } from "lucide-react";
 
-export default function AwarenessPage({ params }: { params: { id: string } }) {
+export default function AwarenessPage({ params }: { params: Record<string, string> }) {
   const data = awarenessData[params.id as keyof typeof awarenessData];
 
   if (!data) {
